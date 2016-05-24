@@ -1,0 +1,116 @@
+set nocompatible " use more than vi
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'bling/vim-airline'
+
+
+Plugin 'keith/swift'
+Plugin 'tomasr/molokai'
+Plugin 'scrooloose/syntastic'
+
+Plugin 'fatih/vim-go'
+
+call vundle#end()
+filetype plugin indent on
+set clipboard=unnamed
+set number
+syntax on
+set hlsearch
+set t_Co=256
+set background=dark
+
+set exrc
+set secure
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+"colorscheme molokai
+"default syntax checking
+let g:syntastic_python_python_exec = '/usr/bin/python3' " use python 3
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+
+" insensitive search
+ set ignorecase
+ set smartcase
+"
+" " esc with jk
+ inoremap jk <ESC>
+"
+" " clearer cursor
+ :set cursorline
+"
+" " some of this taken from sferik/dotfiles
+"
+" " let backspace work on other than just inserted text
+ set backspace=indent,eol,start
+"
+" " Set default encoding to UTF-8.
+ set encoding=utf-8 fileencodings=
+"
+" " cursor flip to matching parens and such
+ set showmatch
+"
+" " Keep 5 lines of context when scrolling
+ set scrolloff=5
+"
+
+" " Backspace and cursor keys wrap
+ set whichwrap+=<,>,h,l
+"
+" " Turn on wild menu
+ set wildmenu
+"
+" " Path/file expansion in colon-mode.
+ set wildmode=longest:full,list:full,list:longest
+ set wildchar=<TAB>
+"
+" " Yes, we have a fast terminal
+ set synmaxcol=300
+ set ttyfast
+ set ttyscroll=3
+ set lazyredraw
+"
+" " tab configuration should be language specific
+ set tabstop=4
+ set shiftwidth=4
+ set noexpandtab
+ set autoindent
+ " language specific tabs
+ autocmd FileType html       setl sw=2 sts=2 et
+ autocmd FileType eruby       setl sw=2 sts=2 et
+ autocmd FileType ruby       setl sw=2 sts=2 et
+ autocmd FileType ocaml       setl sw=2 sts=2 et
+ autocmd FileType sh       setl sw=2 sts=2 et
+ autocmd FileType yaml       setl sw=2 sts=2 et
+
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"
+" " airline
+set laststatus=2
+"
+" Go stuff
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
